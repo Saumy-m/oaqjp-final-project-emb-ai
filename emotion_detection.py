@@ -14,15 +14,15 @@ def emotion_detector(text_to_analyze):
     #response from the api
     resp= requests.post(url, json= inputs, headers= header)
     # anger score from response
-    anger_score = json. loads(resp.text)[ "emotionPredictions"][0]["emotion"]["anger"]
+    anger_score = json.loads(resp.text)["emotionPredictions"][0]["emotion"]["anger"]
     # disgust score from response
-    disgust_score = json. loads(resp.text)["emotionPredictions"][0]["emotion"]["disgust"]
+    disgust_score = json.loads(resp.text)["emotionPredictions"][0]["emotion"]["disgust"]
     # fear score from response
-    fear_score = json. loads(resp.text )["emotionPredictions" ][0][ "emotion" ][ " fear" ]
+    fear_score = json.loads(resp.text )["emotionPredictions" ][0]["emotion" ][ "fear" ]
     # joy score from response
-    joy_score = json. loads(resp.text)["emotionPredictions"][0]["emotion"][" joy"]
+    joy_score = json.loads(resp.text)["emotionPredictions"][0]["emotion"]["joy"]
     # sadness score from response
-    sadness_score = json. loads(resp.text)[ "emotionPredictions"][0]["emotion"][ " sadness"]
+    sadness_score = json.loads(resp.text)["emotionPredictions"][0]["emotion"][ "sadness"]
     # dictionary to find key of highest value
     max_dict={'anger': anger_score, 'disgust': disgust_score, 'fear': fear_score, 'joy': joy_score, 'sadness': sadness_score}
     # string to hold the dominant emotion value
