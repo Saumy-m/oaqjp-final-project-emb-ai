@@ -7,7 +7,7 @@ def emotion_detector(text_to_analyze):
     #url of api
     url= 'https://sn-watson-emotion.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/EmotionPredict'
     #header of api
-    header ={{"grpc-metadata-mm-model-id": "emotion_aggregated-workflow_lang_en_stock"}}
+    header ={"grpc-metadata-mm-model-id": "emotion_aggregated-workflow_lang_en_stock"}
     #input type declaration
     inputs= {"raw_document": { "text": text_to_analyze }}
 
@@ -22,7 +22,7 @@ def emotion_detector(text_to_analyze):
     # joy score from response
     joy_score = json.loads(resp.text)["emotionPredictions"][0]["emotion"]["joy"]
     # sadness score from response
-    sadness_score = json.loads(resp.text)["emotionPredictions"][0]["emotion"][ "sadness"]
+    sadness_score = json.loads(resp.text)["emotionPredictions"][0]["emotion"]["sadness"]
     # dictionary to find key of highest value
     max_dict={'anger': anger_score, 'disgust': disgust_score, 'fear': fear_score, 'joy': joy_score, 'sadness': sadness_score}
     # string to hold the dominant emotion value
