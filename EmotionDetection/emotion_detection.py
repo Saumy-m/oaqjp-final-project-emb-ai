@@ -29,4 +29,5 @@ def emotion_detector(text_to_analyze):
     dominant_emotion= max(max_dict, key = max_dict.get)
     # final formatted response
     format_resp= {'anger': anger_score, 'disgust': disgust_score, 'fear': fear_score, 'joy': joy_score, 'sadness': sadness_score, 'dominant_emotion': dominant_emotion}
-    return format_resp
+    resp_text = json.dumps(format_resp)
+    return resp_text
