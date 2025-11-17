@@ -1,15 +1,22 @@
-from flask import Flask, request, jsonify
+from flask import Flask, render_template, request
+import json
 from EmotionDetection import emotion_detection
 
 app = Flask(__name__)
 
-@app.route('/emotionDetector', methods=['POST'])
-def detect_emotion():
-    data = request.get_json()
-    statement = data.get('statement', '')
+@app.route("/", methods=["GET"])
+def index():
+    return render_template("index.html")
 
-    result = emotion_detection.emotion_detector(statement)
-    return jsonify(result)
+@app.route("/EmotionDetection", methods=["GET"])
+def emotion_detection():
+    text = request.args.get("textToAnalyze", "")
+
+    # Run your emotion detection function
+    result_dict = emotion_detection.emotion_detector(text)
+
+    # Return the result
+    return result_dict
 
 if __name__ == "__main__":
-    app.run(host='localhost', port=5000)
+    app.run(host="localhost", port=5000, debug=True)
